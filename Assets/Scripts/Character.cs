@@ -1,18 +1,33 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
-    //Attribute
+    //Attributes
     private int health;
-    public int Health { get => health; set => health = (value < 0) ? 0 : value; }
+    public int Health
+    {
+        get { return health; }
+        set { health = (value < 0) ? 0 : value; }
+    }
 
     protected Animator anim;
-    protected Rigidbody rb;
+    protected Rigidbody2D rb;
+
+    public void Initialize(int startHealth)
+    {
+        Health = startHealth;
+        Debug.Log($"{this.name} is initialed Health : {Health}");
+
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
         Debug.Log($"{this.name} took damage {damage}. Current Health: {Health}");
+
+        IsDead();
     }
 
     public bool IsDead()
@@ -33,6 +48,6 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }

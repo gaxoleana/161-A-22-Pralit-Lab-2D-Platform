@@ -1,16 +1,40 @@
 using UnityEngine;
 
-public class Crocodile : MonoBehaviour
+public class Crocodile : Enemy
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float atkRange;
+    public Player player;
+    public override void Behavior()
     {
-        
+        Vector2 distance = transform.position - player.transform.position;
+        if (distance.magnitude <= atkRange)
+        {
+            Debug.Log($"{player.name} is in the {this.name}'s atk range!");
+            Shoot();
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        base.Initialize(50);
+        DamageHit = 30;
+
+        atkRange = 6.0f;
+        player = GameObject.FindFirstObjectByType<Player>();
+    }
+
     void Update()
     {
-        
+
+    }
+
+    private void FixedUpdate()
+    {
+        Behavior();
+    }
+
+    public void Shoot()
+    {
+        Debug.Log($"{this.name} shoots rock to the {player.name}!");
     }
 }
