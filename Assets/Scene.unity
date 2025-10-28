@@ -1496,6 +1496,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4cfead8c321a6429bd9c0cfe69df10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Bullet>k__BackingField: {fileID: 182108, guid: a5638a192258f4059b0e074542d33fbc, type: 3}
+  <ShootPoint>k__BackingField: {fileID: 583696448}
+  <ReloadTime>k__BackingField: 0
+  <WaitTime>k__BackingField: 0
 --- !u!4 &867142178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 463774, guid: 5bf5c6bf0a12e4c7bb94b49e2adbc5ee, type: 3}
