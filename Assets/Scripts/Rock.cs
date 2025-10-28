@@ -1,14 +1,28 @@
 using UnityEngine;
 
-public class Rock : MonoBehaviour
+public class Rock : Weapon
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Rigidbody2D rb;
+    public Vector2 force;
+
+    public override void Move()
     {
-        
+        rb.AddForce(force);
     }
 
-    // Update is called once per frame
+    public override void OnHitWith(Character obj)
+    {
+        if (obj is Player)
+            obj.TakeDamage(this.damage);
+    }
+
+    void Start()
+    {
+        damage = 40;
+        force = new Vector2(GetShootDirection() * 90, 400);
+        Move();
+    }
+
     void Update()
     {
         

@@ -14,6 +14,18 @@ public class Player : Character, IShootable
         WaitTime = 0.0f;
     }
 
+    private void FixedUpdate()
+    {
+        //Debug.Log("Update" + Time.fixedDeltaTime);
+        WaitTime += Time.fixedDeltaTime;
+    }
+
+    private void Update()
+    {
+        //Debug.Log("Fixed Update" + Time.deltaTime);
+        Shoot();
+    }
+
     public void Shoot()
     {
         if (Input.GetButtonDown("Fire1") && WaitTime >= ReloadTime)
@@ -37,18 +49,7 @@ public class Player : Character, IShootable
         if (enemy != null)
         {
             OnHitWith(enemy);
+            Debug.Log($"{this.name} collides with {enemy.name}!");
         }
-    }
-
-    void FixedUpdate()
-    {
-        //Debug.Log("Update" + Time.fixedDeltaTime);
-        WaitTime = Time.fixedDeltaTime;
-    }
-
-    void Update()
-    {
-        //Debug.Log("Fixed Update" + Time.deltaTime);
-        Shoot();
     }
 }

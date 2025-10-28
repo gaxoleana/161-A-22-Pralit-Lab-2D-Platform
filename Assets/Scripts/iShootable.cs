@@ -7,8 +7,5 @@ public interface IShootable
     public float ReloadTime { get; set; }
     public float WaitTime { get; set; }
     
-    public void Shoot()
-    {
-
-    }
+    public void Shoot();
 }
