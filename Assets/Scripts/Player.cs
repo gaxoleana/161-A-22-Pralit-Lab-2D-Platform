@@ -41,6 +41,7 @@ public class Player : Character, IShootable
     public void OnHitWith(Enemy enemy)
     {
         TakeDamage(enemy.DamageHit);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)

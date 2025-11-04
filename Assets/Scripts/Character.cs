@@ -12,6 +12,7 @@ public abstract class Character : MonoBehaviour
 
     protected Animator anim;
     protected Rigidbody2D rb;
+    [SerializeField] HealthBar healthBar;
 
     public void Initialize(int startHealth)
     {
@@ -20,11 +21,13 @@ public abstract class Character : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
+        healthBar.UpdateHealthBar(Health, health);
         Debug.Log($"{this.name} took damage {damage}. Current Health: {Health}");
 
         IsDead();
